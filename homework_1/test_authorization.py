@@ -1,18 +1,9 @@
 import time
 
-import pytest
-from selenium import webdriver
 from selenium.webdriver.common.by import By
 
 
 LINK_AUTH = 'https://www.saucedemo.com/'
-
-
-@pytest.fixture(scope='function')
-def browser():
-    driver = webdriver.Chrome()
-    yield driver
-    driver.close()
 
 
 def test_positive_authorization(browser):

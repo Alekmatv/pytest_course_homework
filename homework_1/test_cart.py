@@ -1,37 +1,13 @@
 import time
 
-import pytest
-from selenium import webdriver
 from selenium.webdriver.common.by import By
 
 
-LINK_AUTH = 'https://www.saucedemo.com/'
-
-
-@pytest.fixture(scope='function')
-def browser():
-    browser = webdriver.Chrome()
-
-    browser.get(LINK_AUTH)
-
-    username_field = browser.find_element(By.ID, 'user-name')
-    username_field.send_keys('standard_user')
-
-    password_field = browser.find_element(By.ID, 'password')
-    password_field.send_keys('secret_sauce')
-
-    login_button = browser.find_element(By.ID, 'login-button')
-    login_button.click()
-
-    yield browser
-
-    browser.close()
-
-
-def test_adding_product_catalog(browser):
+def test_adding_product_catalog(browser_with_auth):
     '''Добавить товар (Sauce Labs Backpack) в корзину из каталога'''
 
     exp_text = 'Sauce Labs Backpack'
+    browser = browser_with_auth
 
     button_add_to_cart_first = browser.find_element(
         By.ID,
@@ -49,8 +25,10 @@ def test_adding_product_catalog(browser):
     assert first_product.text == exp_text, 'Товар не был добавлен в корзину'
 
 
-def test_removing_product_catalog(browser):
+def test_removing_product_catalog(browser_with_auth):
     '''Добавить товар (Sauce Labs Backpack) в корзину из каталога и удалить'''
+
+    browser = browser_with_auth
 
     button_add_to_cart_first = browser.find_element(
         By.ID,
@@ -71,10 +49,11 @@ def test_removing_product_catalog(browser):
     assert len(product) == 0, 'Товар не был удален из корзины'
 
 
-def test_adding_product_page(browser):
+def test_adding_product_page(browser_with_auth):
     '''Добавить товар (Sauce Labs Backpack) в корзину из карточки товара'''
 
     exp_text = 'Sauce Labs Backpack'
+    browser = browser_with_auth
 
     to_product_page = browser.find_element(By.ID, 'item_4_title_link')
     to_product_page.click()
@@ -95,10 +74,12 @@ def test_adding_product_page(browser):
     assert first_product.text == exp_text, 'Товар не был добавлен в корзину'
 
 
-def test_removing_product_page(browser):
+def test_removing_product_page(browser_with_auth):
 
     """Добавить товар (Sauce Labs Backpack) в корзину
        из карточки товара и удалить"""
+
+    browser = browser_with_auth
 
     to_product_page = browser.find_element(By.ID, 'item_4_title_link')
     to_product_page.click()

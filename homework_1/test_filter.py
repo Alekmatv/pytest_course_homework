@@ -1,33 +1,12 @@
 import time
 
-import pytest
-from selenium import webdriver
 from selenium.webdriver.common.by import By
 
 
-LINK_AUTH = 'https://www.saucedemo.com/'
-
-
-@pytest.fixture(scope='function')
-def browser():
-    browser = webdriver.Chrome()
-
-    browser.get(LINK_AUTH)
-
-    username_field = browser.find_element(By.ID, 'user-name')
-    username_field.send_keys('standard_user')
-
-    password_field = browser.find_element(By.ID, 'password')
-    password_field.send_keys('secret_sauce')
-
-    login_button = browser.find_element(By.ID, 'login-button')
-    login_button.click()
-
-    yield browser
-
-
-def test_sort_by_a_to_z(browser):
+def test_sort_by_a_to_z(browser_with_auth):
     '''Сортировка от A до Z'''
+
+    browser = browser_with_auth
 
     sort_container = browser.find_element(By.CLASS_NAME,
                                           'product_sort_container')
@@ -50,8 +29,10 @@ def test_sort_by_a_to_z(browser):
     assert items_names == sorted_items, 'Неправильная сортировка'
 
 
-def test_sort_by_z_to_a(browser):
+def test_sort_by_z_to_a(browser_with_auth):
     '''Сортировка от Z до A'''
+
+    browser = browser_with_auth
 
     sort_container = browser.find_element(By.CLASS_NAME,
                                           'product_sort_container')
@@ -74,8 +55,10 @@ def test_sort_by_z_to_a(browser):
     assert items_names == sorted_items, 'Неправильная сортировка'
 
 
-def test_sort_by_low_to_high(browser):
+def test_sort_by_low_to_high(browser_with_auth):
     '''Сортировка по возрастанию цены'''
+
+    browser = browser_with_auth
 
     sort_container = browser.find_element(By.CLASS_NAME,
                                           'product_sort_container')
@@ -98,8 +81,10 @@ def test_sort_by_low_to_high(browser):
     assert items_prices == sorted_items, 'Неправильная сортировка'
 
 
-def test_sort_by_high_to_low(browser):
+def test_sort_by_high_to_low(browser_with_auth):
     '''Сортировка по убыванию цены'''
+
+    browser = browser_with_auth
 
     sort_container = browser.find_element(By.CLASS_NAME,
                                           'product_sort_container')
