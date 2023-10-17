@@ -1,4 +1,4 @@
-from pages.home_page import HomePage
+from pages import HomePage
 
 
 def test_sort_by_a_to_z(browser_with_auth):

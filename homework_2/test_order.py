@@ -1,6 +1,4 @@
-from pages.home_page import HomePage
-from pages.cart_page import CartPage
-from pages.checkout_page import CheckoutPage
+from pages import HomePage, CartPage, CheckoutPage
 from locators import HomePageLocators as HL
 
 

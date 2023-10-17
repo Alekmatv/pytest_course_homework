@@ -1,4 +1,4 @@
-from pages.login_page import LoginPage
+from pages import LoginPage
 
 
 LINK_AUTH = 'https://www.saucedemo.com/'

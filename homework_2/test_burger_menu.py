@@ -1,6 +1,6 @@
 import pytest
 
-from pages.home_page import HomePage
+from pages import HomePage
 from locators import HomePageLocators as HL
 
 

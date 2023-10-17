@@ -1,5 +1,4 @@
-from pages.home_page import HomePage
-from pages.product_page import ProductPage
+from pages import HomePage, ProductPage
 from locators import HomePageLocators as HL
 
 
