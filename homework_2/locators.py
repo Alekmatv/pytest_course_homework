@@ -32,6 +32,8 @@ class CartPageLocators:
                      '#item_4_title_link .inventory_item_name')
     REMOVE_BACKPACK = (By.ID, 'remove-sauce-labs-backpack')
     CHECKOUT_BUTTON = (By.ID, 'checkout')
+    BURGER_MENU_BUTTON = (By.ID, 'react-burger-menu-btn')
+    BURGER_ALL_ITEMS_BUTTON = (By.ID, 'inventory_sidebar_link')
     ALL_ITEMS = (By.CLASS_NAME, 'inventory_item_name')
 
 

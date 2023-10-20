@@ -1,6 +1,6 @@
 import pytest
 
-from pages import HomePage
+from pages import HomePage, CartPage
 from locators import HomePageLocators as HL
 from data import URL
 
@@ -49,3 +49,22 @@ def test_reset_app_state(browser_with_auth):
 
     assert home_page.is_exist(*HL.BACKPACK_ADD_TO_CART), \
         'Не появилась кнопка Add to cart'
+
+
+def test_all_items_button(browser_with_auth):
+    '''Переход на страницу Home из бургер меню'''
+
+    exp_url = URL.HOME
+
+    home_page = HomePage(browser_with_auth, browser_with_auth.current_url)
+    home_page.open_cart()
+
+    cart_page = CartPage(home_page.browser, home_page.browser.current_url)
+    cart_page.open_burger_menu()
+    cart_page.click_all_items()
+
+    home_page = HomePage(cart_page.browser, cart_page.browser.current_url)
+
+    act_url = home_page.browser.current_url
+
+    assert act_url == exp_url, 'Не удалось перейти по кнопке All Items'
