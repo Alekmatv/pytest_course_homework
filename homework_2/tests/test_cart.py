@@ -1,11 +1,12 @@
 from pages import HomePage, CartPage, ProductPage
 from locators import HomePageLocators as HL, CartPageLocators as CL
+from data import ProductName
 
 
 def test_adding_product_catalog(browser_with_auth):
     '''Добавить товар (Sauce Labs Backpack) в корзину из каталога'''
 
-    exp_text = 'Sauce Labs Backpack'
+    exp_text = ProductName.BACKPACK
 
     home_page = HomePage(browser_with_auth, browser_with_auth.current_url)
     home_page.add_to_cart(*HL.BACKPACK_ADD_TO_CART)
@@ -36,7 +37,7 @@ def test_removing_product_catalog(browser_with_auth):
 def test_adding_product_page(browser_with_auth):
     '''Добавить товар (Sauce Labs Backpack) в корзину из карточки товара'''
 
-    exp_text = 'Sauce Labs Backpack'
+    exp_text = ProductName.BACKPACK
 
     home_page = HomePage(browser_with_auth, browser_with_auth.current_url)
     home_page.click_on_image(*HL.BACKPACK_IMAGE)

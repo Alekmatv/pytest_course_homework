@@ -1,14 +1,16 @@
 from pages import LoginPage
+from data import URL, Username, Password, Error
 
 
-LINK_AUTH = 'https://www.saucedemo.com/'
+LINK_AUTH = URL.AUTH
+LINK_HOME = URL.HOME
 
 
 def test_positive_authorization(browser):
 
-    exp_url = 'https://www.saucedemo.com/inventory.html'
-    login = 'standard_user'
-    password = 'secret_sauce'
+    exp_url = LINK_HOME
+    login = Username.STANDART
+    password = Password.POSITIVE
 
     login_page = LoginPage(browser, LINK_AUTH)
     login_page.open()
@@ -19,10 +21,9 @@ def test_positive_authorization(browser):
 
 def test_negative_authorization(browser):
 
-    exp_error_text = 'Epic sadface: Username and password ' \
-                     'do not match any user in this service'
-    login = 'user'
-    password = 'user'
+    exp_error_text = Error.AUTH
+    login = Username.NEGATIVE
+    password = Username.NEGATIVE
 
     login_page = LoginPage(browser, LINK_AUTH)
     login_page.open()

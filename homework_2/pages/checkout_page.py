@@ -8,6 +8,12 @@ class CheckoutPage(BasePage):
         self.find_element_and_send_keys(*CheckL.LAST_NAME_FIELD, surname)
         self.find_element_and_send_keys(*CheckL.ZIP_CODE_FIELD, postal_code)
 
+    def is_error(self):
+        return self.is_exist(*CheckL.ERROR_CONTAINER)
+
+    def get_error_message(self):
+        return self.browser.find_element(*CheckL.ERROR_CONTAINER).text
+
     def click_continue(self):
         self.find_element_and_click(*CheckL.CONTINUE_BUTTON)
 

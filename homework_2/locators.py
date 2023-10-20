@@ -47,5 +47,6 @@ class CheckoutPageLocators:
     LAST_NAME_FIELD = (By.ID, 'last-name')
     ZIP_CODE_FIELD = (By.ID, 'postal-code')
     CONTINUE_BUTTON = (By.ID, 'continue')
+    ERROR_CONTAINER = (By.CLASS_NAME, 'error-message-container.error')
     FINISH_BUTTON = (By.ID, 'finish')
     COMPLETE_HEADER = (By.CLASS_NAME, 'complete-header')

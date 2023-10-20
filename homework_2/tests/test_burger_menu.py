@@ -2,15 +2,16 @@ import pytest
 
 from pages import HomePage
 from locators import HomePageLocators as HL
+from data import URL
 
 
-LINK_AUTH = 'https://www.saucedemo.com/'
+LINK_AUTH = URL.AUTH
 
 
 def test_logout(browser_with_auth):
     '''Выход из аккаунта через бургер меню'''
 
-    exp_url = 'https://www.saucedemo.com/'
+    exp_url = LINK_AUTH
 
     home_page = HomePage(browser_with_auth, browser_with_auth.current_url)
     home_page.open_burger_menu()
@@ -24,7 +25,7 @@ def test_logout(browser_with_auth):
 def test_about(browser_with_auth):
     '''Переход на страницу About из бургер меню'''
 
-    exp_url = 'https://saucelabs.com/'
+    exp_url = URL.ABOUT
 
     home_page = HomePage(browser_with_auth, browser_with_auth.current_url)
     home_page.open_burger_menu()
