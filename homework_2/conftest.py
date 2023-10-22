@@ -1,5 +1,6 @@
 import pytest
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 
 from pages.login_page import LoginPage
 from data import URL, Username, Password
@@ -9,8 +10,17 @@ LINK_AUTH = URL.AUTH
 
 
 @pytest.fixture(scope='function')
-def browser():
-    browser = webdriver.Chrome()
+def options():
+    options = Options()
+
+    options.add_argument('--headless')
+
+    return options
+
+
+@pytest.fixture(scope='function')
+def browser(options):
+    browser = webdriver.Chrome(options=options)
     yield browser
     browser.close()
 

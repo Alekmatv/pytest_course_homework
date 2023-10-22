@@ -1,5 +1,3 @@
-import time
-
 from pages.base_page import BasePage
 from locators import HomePageLocators as HL
 
@@ -40,16 +38,14 @@ class HomePage(BasePage):
     def open_burger_menu(self):
         self.find_element_and_click(*HL.BURGER_MENU_BUTTON)
 
-        time.sleep(1)
-
     def click_about(self):
-        self.find_element_and_click(*HL.BURGER_ABOUT_BUTTON)
+        self.wait_and_click(*HL.BURGER_ABOUT_BUTTON)
 
     def click_logout(self):
-        self.find_element_and_click(*HL.BURGER_LOGOUT_BUTTON)
+        self.wait_and_click(*HL.BURGER_LOGOUT_BUTTON)
 
     def click_reset(self):
-        self.find_element_and_click(*HL.BURGER_RESET_BUTTON)
+        self.wait_and_click(*HL.BURGER_RESET_BUTTON)
 
     def is_badge(self):
         return self.is_exist(*HL.BADGE)

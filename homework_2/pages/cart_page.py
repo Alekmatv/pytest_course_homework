@@ -1,5 +1,3 @@
-import time
-
 from pages.base_page import BasePage
 from locators import CartPageLocators as CL
 
@@ -24,7 +22,5 @@ class CartPage(BasePage):
     def open_burger_menu(self):
         self.find_element_and_click(*CL.BURGER_MENU_BUTTON)
 
-        time.sleep(1)
-
     def click_all_items(self):
-        self.find_element_and_click(*CL.BURGER_ALL_ITEMS_BUTTON)
+        self.wait_and_click(*CL.BURGER_ALL_ITEMS_BUTTON)
