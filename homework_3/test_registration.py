@@ -41,8 +41,8 @@ def test_registration_with_expected_conditions(browser, wait):
 
 
 @pytest.mark.xfail
-def test_registration_with_impilicitly_wait(browser_impilicitly_wait):
-    browser = browser_impilicitly_wait
+def test_registration_with_implicitly_wait(browser_implicitly_wait):
+    browser = browser_implicitly_wait
 
     browser.get(URL.URL_REGISTRATION)
 

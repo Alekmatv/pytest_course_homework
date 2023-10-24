@@ -13,7 +13,7 @@ def browser():
 
 
 @pytest.fixture
-def browser_impilicitly_wait():
+def browser_implicitly_wait():
     browser = webdriver.Chrome()
     browser.implicitly_wait(10)
 
